@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Find My Car</string>
+    <string name="helloName">czesc</string>
+    <string name="button_show_skateboarder">Pokaż skaterów</string>
+    <string name="button_show_icon">Pokaż ikonę</string>
+    <string name="floor_num">FLOOR NUMBER</string>
+    <string name="sector_letter">SECTOR LETTER</string>
+    <string name="place_num">PLACE NUMBER</string>
+    <string name="activity_save_nogps">WHERE IS THE CAR ?</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="submit">SAVE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="back">BACK</string>
+    <string name="saveAction">SAVE</string>
+    <string name="showAction">SHOW</string>
+    <string name="picure_name">PHOTO</string>
+
+    <string name="menu2">MENU</string>
+    <string name="buttonSaveGpsAction">SAVE GPS</string>
+    <string name="buttonShowMap">SHOW MAP</string>
+    <string name="button_read">READ</string>
+    <string name="min_text">minutes</string>
+    <string name="btn_return">HOME</string>
+    <string name="btn_nav">NAVIGATE</string>
+    <string name="txt_urcar">HERE IS YOUR CAR</string>
+</resources>

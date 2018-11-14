@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="575dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/activity_save_nogps"
+                android:textAllCaps="false"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/roboto_black"
+                tools:layout_editor_absoluteX="143dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/picure_name"
+                android:textSize="30sp"
+                app:fontFamily="@font/roboto_black_italic" />
+
+            <ImageView
+                android:id="@+id/camPreview"
+                android:layout_width="39dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TIME"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="SET TIME"
+                android:textSize="30sp"
+                app:fontFamily="@font/roboto_black_italic" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="37dp"
+                android:layout_height="81dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:textSize="30sp" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txvResultFloor"
+                android:layout_width="254dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/floor_num"
+                android:inputType="number"
+                android:textSize="30sp"
+                app:fontFamily="@font/roboto_black_italic" />
+
+            <ImageButton
+                android:id="@+id/btnSpeakFloor"
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="getSpeechInput"
+                app:srcCompat="@android:drawable/ic_btn_speak_now" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txvResultPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/place_num"
+                android:inputType="number"
+                android:textSize="30sp"
+                app:fontFamily="@font/roboto_black_italic" />
+
+            <ImageButton
+                android:id="@+id/btnSpeakPlaceNum"
+                android:layout_width="198dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="getSpeechInput"
+                app:srcCompat="@android:drawable/ic_btn_speak_now" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txvResultSec"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/sector_letter"
+                android:inputType="textCapCharacters"
+                android:textSize="30sp"
+                app:fontFamily="@font/roboto_black_italic" />
+
+            <ImageButton
+                android:id="@+id/btnSpeakSec"
+                android:layout_width="198dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="getSpeechInput"
+                app:srcCompat="@android:drawable/ic_btn_speak_now" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/submit"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
+
+
