@@ -42,7 +42,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-
+        tlong = (TextView) findViewById(R.id.getLon);
+        tlat = (TextView) findViewById(R.id.getLat);
+        homebtn = (Button) findViewById(R.id.btn_home);
 
 
         Intent intent = getIntent();
@@ -51,25 +53,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
        lonn = intent.getDoubleExtra("Longi",0.0);
 
 
-       latti=Double.toString(latt);
-
-
-
-
-
-       tlong = (TextView)findViewById(R.id.getLon);
-       tlat=(TextView)findViewById(R.id.getLat);
-
-
-tlong.setText(Double.toString(latt));
-tlat.setText(Double.toString(lonn));
-
-
-
-homebtn=(Button)findViewById(R.id.btn_home);
-
-
-homebtn.setOnClickListener(new View.OnClickListener() {
+        latti = Double.toString(latt);
+        tlong.setText(Double.toString(latt));
+        tlat.setText(Double.toString(lonn));
+        homebtn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
 

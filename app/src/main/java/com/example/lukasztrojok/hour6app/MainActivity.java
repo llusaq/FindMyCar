@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         camPreview = (ImageView) findViewById(R.id.camPreview);
 
+        Button btnCancel = (Button) findViewById(R.id.btnCancel);
+        Button realSaveCancel = (Button) findViewById(R.id.btnSave);
+
+
+
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, CAM_REQUEST);
@@ -86,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button btnCancel = (Button) findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -97,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Button realSaveCancel = (Button) findViewById(R.id.btnSave);
         realSaveCancel.setOnClickListener(new View.OnClickListener() {
 
             @Override

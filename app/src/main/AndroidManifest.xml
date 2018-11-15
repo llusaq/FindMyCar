@@ -51,10 +51,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".ShowActivity" />
-        <activity android:name=".GPSactivity" />
-        <activity android:name=".CoolMenu">
+        <activity
+            android:name=".Main2Activity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ShowActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".GPSactivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".CoolMenu"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +71,8 @@
         </activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="sensorPortrait" />
         <activity android:name=".TestForm"></activity>
     </application>
 
