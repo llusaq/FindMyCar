@@ -23,4 +23,11 @@
     <string name="btn_return">HOME</string>
     <string name="btn_nav">NAVIGATE</string>
     <string name="txt_urcar">HERE IS YOUR CAR</string>
+    <string name="longitude">LONGITUDE</string>
+    <string name="latitude">LATITUDE</string>
+    <string name="accuracy">ACCURACY</string>
+    <string name="remove">REMOVE</string>
+    <string name="reset">RESET GPS</string>
+    <string name="wherepark">WHERE DID YOU PARK?</string>
+    <string name="numfl">FLOOR NUMBER</string>
 </resources>

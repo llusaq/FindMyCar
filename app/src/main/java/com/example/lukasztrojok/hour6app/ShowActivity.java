@@ -65,6 +65,7 @@ public class ShowActivity extends AppCompatActivity {
         //   displayFloor.setText(textPath);
 
 
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
@@ -90,9 +91,9 @@ public class ShowActivity extends AppCompatActivity {
         wholeTextArray = wholeText.split("/");
 
 
-        displayFloor.setText(wholeTextArray[0]);
-        displayPlace.setText(wholeTextArray[1]);
-        displaySector.setText(wholeTextArray[2]);
+        displayFloor.setText(wholeTextArray[1]);
+        displayPlace.setText(wholeTextArray[2]);
+        displaySector.setText(wholeTextArray[3]);
 
         String path = "sdcard/findCar/car_image.jpg";
         camPreview.setImageDrawable(Drawable.createFromPath(path));
@@ -109,7 +110,7 @@ public class ShowActivity extends AppCompatActivity {
         });
 
 
-        formatedRead = "Floor number: " + wholeTextArray[0] + ". Place number: " + wholeTextArray[1] + ". Sector letter: " + wholeTextArray[2];
+        formatedRead = "Floor number: " + wholeTextArray[1] + ". Place number: " + wholeTextArray[2] + ". Sector letter: " + wholeTextArray[3];
 
 
         readButton.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +136,7 @@ public class ShowActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent startIntent = new Intent(getApplicationContext(), Main2Activity.class);
+                Intent startIntent = new Intent(getApplicationContext(), CoolMenu.class);
                 startActivity(startIntent);
             }
 
@@ -147,6 +148,7 @@ public class ShowActivity extends AppCompatActivity {
         if (tts != null) {
             tts.stop();
             tts.shutdown();
+            camPreview = null;
         }
 
         super.onDestroy();

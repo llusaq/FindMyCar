@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class GPSactivity extends AppCompatActivity {
     private Button gButton;
     private Button btnMap;
     private TextView gView;
+    private TextView lighttext;
     private Float accuracy;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -40,6 +42,7 @@ public class GPSactivity extends AppCompatActivity {
 
     private TextView accuracytxt;
 
+    private ImageView light;
     String latitudetext;
     String longitudetext;
     String both;
@@ -55,27 +58,23 @@ public class GPSactivity extends AppCompatActivity {
 
 
         gButton = findViewById(R.id.gButton);
-
         gView = findViewById(R.id.gView);
-
         btnMap = findViewById(R.id.btn_map);
-
-
+        light = findViewById(R.id.image_light);
+        lighttext = findViewById(R.id.textlight);
         latitudeview = (TextView) findViewById(R.id.latitude_field);
         longitudeview = (TextView) findViewById(R.id.longitude_field);
-
         accuracytxt = (TextView) findViewById(R.id.fieldAcc);
-
+        lighttext.setText("SEARCHING FOR GPS");
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 accuracy = location.getAccuracy();
-                accuracytxt.setText(accuracy.toString() + "meters");
+                accuracytxt.setText(accuracy.toString() + " meters");
 
 
                 if (accuracy < 10.0 && accuracy > 0.0) {
-
 
                     currentLatitude = location.getLatitude();
                     currentLongitude = location.getLongitude();
@@ -85,11 +84,47 @@ public class GPSactivity extends AppCompatActivity {
                     latitudeview.setText(latitudetext);
                     longitudeview.setText(longitudetext);
                     locationManager.removeUpdates(locationListener);
+                    lighttext.setText("GPS ACTIVE!");
+
+
+                    gButton.setOnClickListener(new View.OnClickListener() {
+
+
+                        @SuppressLint("MissingPermission")
+                        @Override
+                        public void onClick(View v) {
+
+
+                            locationManager.requestLocationUpdates("gps", 0, 0, locationListener);
+                            // locationManager.requestSingleUpdate(Criteria.ACCURACY_HIGH,locationListener,);
+
+
+                        }
+                    });
+
+
                 } else {
 
 
                     Toast.makeText(GPSactivity.this, "GPS Signal too low!", Toast.LENGTH_SHORT).show();
+                    lighttext.setText("NO GPS, MANUAL INPUT ONLY!");
+                    locationManager.removeUpdates(locationListener);
 
+
+                    gButton.setOnClickListener(new View.OnClickListener() {
+
+
+                        @Override
+                        public void onClick(View v) {
+
+                            locationManager.removeUpdates(locationListener);
+
+                            Intent intent = new Intent(GPSactivity.this, MainActivity.class);
+                            startActivity(intent);
+
+
+                        }
+                    });
 
                 }
             }
@@ -101,6 +136,8 @@ public class GPSactivity extends AppCompatActivity {
 
             @Override
             public void onProviderEnabled(String provider) {
+
+
             }
 
             @Override
@@ -123,13 +160,15 @@ public class GPSactivity extends AppCompatActivity {
             return;
         } else {
 
-            //configureButton();
+
             locationManager.requestLocationUpdates("gps", 0, 0, locationListener);
 
 
             btnMap.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    locationManager.removeUpdates(locationListener);
 
                     Intent requestLink = new Intent(GPSactivity.this, MapsActivity.class);
                     requestLink.putExtra("Lati", currentLatitude);
@@ -141,6 +180,61 @@ public class GPSactivity extends AppCompatActivity {
             });
 
 
+        }
+
+
+        gButton.setOnClickListener(new View.OnClickListener() {
+
+
+            @SuppressLint("MissingPermission")
+            @Override
+            public void onClick(View v) {
+
+
+                // locationManager.requestLocationUpdates("gps", 0, 0, locationListener);
+                // locationManager.requestSingleUpdate(Criteria.ACCURACY_HIGH,locationListener,);
+
+                locationManager.removeUpdates(locationListener);
+
+                Intent intent = new Intent(GPSactivity.this, MainActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+    }
+
+
+    public void onPause() {
+        if (locationListener != null) {
+
+            locationManager.removeUpdates(locationListener);
+
+        }
+
+        super.onPause();
+
+
+    }
+
+
+    public void onDestroy() {
+        if (locationListener != null) {
+
+            locationManager.removeUpdates(locationListener);
+
+        }
+
+        super.onDestroy();
+
+
+    }
+}
+
+
+/*
             gButton.setOnClickListener(new View.OnClickListener() {
 
 
@@ -157,11 +251,9 @@ public class GPSactivity extends AppCompatActivity {
 
 
             });
+*/
 
 
-        }
-    }
-}
 
 /*
     private void configureButton() {

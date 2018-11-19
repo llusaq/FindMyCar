@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     Integer whichButton;
+    Integer whatoption = 1;
 
     static final int CAM_REQUEST = 1;
 
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent startIntent = new Intent(getApplicationContext(), Main2Activity.class);
+                Intent startIntent = new Intent(getApplicationContext(), CoolMenu.class);
                 startActivity(startIntent);
             }
 
@@ -115,12 +116,11 @@ public class MainActivity extends AppCompatActivity {
                 if(floorNumber.isEmpty()||placeNumber.isEmpty()||sectorLetter.isEmpty()){
 
 
-                    Toast.makeText(MainActivity.this,"FILL IN ALL TEXT FIELDS!", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, "FILL IN ALL TEXT FIELDS!", Toast.LENGTH_SHORT).show();
 
-                }
-                else{
+                } else {
 
-                    wholeText = floorNumber + "/" +placeNumber + "/" +sectorLetter;
+                    wholeText = 1 + "/" + floorNumber + "/" + placeNumber + "/" + sectorLetter;
 
                     if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
 
@@ -128,28 +128,36 @@ public class MainActivity extends AppCompatActivity {
                             String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
                             requestPermissions(permissions,WRITE_EXTERNAL_STORAGE_CODE);
-                        }
-                        else{
+                        } else {
                             saveToTextFile(wholeText);
+
+
+                            Intent optionIntent = new Intent(MainActivity.this, CoolMenu.class);
+
+                            startActivity(optionIntent);
                         }
 
-                    }
-                    else{
+                    } else {
 
                         saveToTextFile(wholeText);
-                    }
 
+                        Intent optionIntent = new Intent(MainActivity.this, CoolMenu.class);
+
+                        startActivity(optionIntent);
+
+
+                    }
 
 
                 }
 
 
 
-
-
-                Intent startIntent = new Intent(getApplicationContext(), Main2Activity.class);
+/*
+                Intent startIntent = new Intent(getApplicationContext(), CoolMenu.class);
                 simpleToastClick();
                 startActivity(startIntent);
+                */
             }
 
         });
@@ -209,12 +217,12 @@ public class MainActivity extends AppCompatActivity {
             bw.close();
 
 
-            Toast.makeText(this, fileName+" "+folder, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "DATA SAVED", Toast.LENGTH_SHORT).show();
 
         }
         catch(Exception e) {
 
-            Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
         }
 
@@ -308,4 +316,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onPause() {
+        Runtime.getRuntime().gc();
+
+        super.onPause();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+
+        Runtime.getRuntime().gc();
+        camPreview = null;
+
+
+        super.onDestroy();
+    }
 }

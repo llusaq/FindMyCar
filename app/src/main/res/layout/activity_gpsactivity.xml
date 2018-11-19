@@ -4,61 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GPSactivity">
+    tools:context=".GPSactivity"
+    android:background="@drawable/lowback">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/gView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SET LOCATION"
+            android:textColor="@android:color/background_light"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LATITUDE" />
+            android:text="LATITUDE"
+            android:textColor="@android:color/background_light" />
 
         <TextView
             android:id="@+id/latitude_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
             android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LONGITUDE" />
+            android:text="LONGITUDE"
+            android:textColor="@android:color/background_light" />
 
         <TextView
             android:id="@+id/longitude_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
             android:textSize="30sp" />
 
         <TextView
             android:id="@+id/TXTacuracy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ACCURACY" />
+            android:text="ACCURACY"
+            android:textColor="@android:color/background_light" />
 
         <TextView
             android:id="@+id/fieldAcc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
             android:textSize="30sp" />
 
         <Button
             android:id="@+id/gButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/buttonSaveGpsAction"
+            android:text="SAVE POSITION"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="175dp" />
@@ -68,6 +86,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SHOW MAP" />
+
+        <android.support.v7.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/image_light"
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/textlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+
+        </android.support.v7.widget.GridLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
