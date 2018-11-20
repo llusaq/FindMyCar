@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BluetoothActivity">
+
+    <ImageView
+        android:id="@+id/iconBlue"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="107dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/statBluetothText"
+        android:layout_width="269dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/iconBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="107dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconBlue">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="BLUETOOTH"
+                android:textAlignment="center" />
+
+            <Switch
+                android:id="@+id/swBtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Enable"
+                android:textOff="DISABLED"
+                android:textOn="ENABLED" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:gravity="fill_vertical|center_horizontal">
+
+            <TextView
+                android:id="@+id/btAsk"
+                android:layout_width="232dp"
+                android:layout_height="62dp"
+                android:text="Get location automaticaly when bluetooth device disconnects and gps signal is strong"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="463dp" />
+
+            <Switch
+                android:id="@+id/swGetDownload"
+                android:layout_width="97dp"
+                android:layout_height="62dp"
+                android:checked="false"
+                android:splitTrack="false"
+                android:text="Enable"
+                android:textOff="OFF"
+                android:textOn="ON"
+                tools:checked="false"
+                tools:layout_editor_absoluteX="243dp"
+                tools:layout_editor_absoluteY="487dp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>

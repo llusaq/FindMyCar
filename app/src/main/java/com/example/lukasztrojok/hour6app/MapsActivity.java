@@ -39,7 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-
+    private static final int ACCESS_GPS_CODE = 1;
     Button homebtn;
     TextView tlong;
     TextView tlat;
@@ -47,9 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     Double latt;
     Double lonn;
-
-    String latti;
-    String lonng;
 
     LatLng car;
     Button btnNav;
@@ -63,14 +60,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String[] wholeTextArray;
 
 
-    Double clong;
-    Double clat;
 
     LatLng you;
 
     StringBuilder text = new StringBuilder();
-    LocationManager locationManager;
-    private LocationListener locationListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+
         car = new LatLng(latt, lonn);
 
 
@@ -174,22 +169,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
 
-        if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+
+            requestPermissions(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, ACCESS_GPS_CODE);
+
+        } else {
+
+            mMap.setMyLocationEnabled(true);
+
         }
-        mMap.setMyLocationEnabled(true);
-
-
 
 
     }
 
 
 }
+

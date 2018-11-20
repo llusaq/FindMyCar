@@ -3,8 +3,10 @@ package com.example.lukasztrojok.hour6app;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -35,6 +37,8 @@ import java.io.PrintWriter;
 public class CoolMenu extends AppCompatActivity {
 
     private ImageButton removeButton;
+    private ImageButton infoBtn;
+    private ImageButton bluetoothBtn;
     private Button bigSaveBtn;
     private Button bigShowBtn;
     private Float accuracy;
@@ -52,6 +56,7 @@ public class CoolMenu extends AppCompatActivity {
     String[] wholeTextArray;
 
     StringBuilder text = new StringBuilder();
+    String info = " Find My Car Application \n\n This application allows you to save the location of your car manually (red light is on) or automatically when the GPS signal accuracy is high (green light is on).\n";
 
     File sdcard = Environment.getExternalStorageDirectory();
 
@@ -124,6 +129,7 @@ public class CoolMenu extends AppCompatActivity {
 
 
         bigSaveBtn = (Button) findViewById(R.id.bigSaveBtn);
+        infoBtn = (ImageButton) findViewById(R.id.btnInfo);
 
         bigShowBtn = (Button) findViewById(R.id.bigShowBtn);
         dataStatus = (TextView) findViewById(R.id.datastatus);
@@ -133,10 +139,31 @@ public class CoolMenu extends AppCompatActivity {
         dataLongi = (TextView) findViewById(R.id.datalong);
         refresh = (ImageButton) findViewById(R.id.refreshgps);
         lights = findViewById(R.id.light);
+        bluetoothBtn = findViewById(R.id.btnBluetooth);
         // casee = (TextView) findViewById(R.id.cases);
 
         //  casee.setText(option.toString());
 
+
+        bluetoothBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), BluetoothActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showInfoDialog();
+
+
+            }
+        });
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -444,6 +471,26 @@ public class CoolMenu extends AppCompatActivity {
 
     }
 
+
+    private void showInfoDialog() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Info");
+        builder.setMessage(info);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+
+
+    }
+
+
     private void showAlertDialog() {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -534,6 +581,11 @@ public class CoolMenu extends AppCompatActivity {
         super.onDestroy();
 
 
+    }
+
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 
