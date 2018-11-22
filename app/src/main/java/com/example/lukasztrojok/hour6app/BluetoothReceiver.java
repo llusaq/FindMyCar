@@ -38,7 +38,10 @@ public class BluetoothReceiver extends BroadcastReceiver {
 
             Intent startActivity = new Intent();
             startActivity.setClassName("com.example.lukasztrojok.hour6app", "com.example.lukasztrojok.hour6app.CoolMenu");
+
+            startActivity.putExtra("btenable", "on");
             startActivity.setFlags(startActivity.FLAG_ACTIVITY_NEW_TASK);
+
             context.startActivity(startActivity);
 
 

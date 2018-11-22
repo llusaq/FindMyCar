@@ -49,12 +49,15 @@ public class CoolMenu extends AppCompatActivity {
     private TextView dataLati;
     private TextView dataStatus;
     private TextView casee;
+    private TextView btCaseTxt;
+
     private ImageView lights;
     private ImageButton refresh;
     private String wtext;
     private String wholeText;
     private Integer option = 0;
     public Integer BToptionOn = 0;
+
     String[] wholeTextArray;
 
     StringBuilder text = new StringBuilder();
@@ -115,7 +118,6 @@ public class CoolMenu extends AppCompatActivity {
 
     }
 
-    public static final String ACTION_ACL_DISCONNECTED = "ACTION_ACL_DISCONNECTED";
 
 
     @Override
@@ -124,7 +126,46 @@ public class CoolMenu extends AppCompatActivity {
         setContentView(R.layout.activity_cool_menu);
 
 
-        Log.d("TestLog", "Bluetooth disconnected");
+        String getIntent = getIntent().getStringExtra("btenable");
+
+
+        if (getIntent != null) {
+
+            Log.d("TEST not null", "NOT NULL");
+
+
+            if (getIntent.equals("on")) {
+
+
+                Log.d("TESTsentintent", "Change BTOPTION to 1");
+
+                BToptionOn = 1;
+
+
+            } else {
+
+
+                BToptionOn = 0;
+                Log.d("TESTsentintent", "Change BTOPTION to 0");
+
+            }
+
+
+        } else {
+
+            BToptionOn = 0;
+            Log.d("TESTsentintent", "Change BTOPTION to 0 and IS NULL");
+
+
+        }
+
+
+        //   String buttonn=receiveFromBt.getString("btnenable","off");
+        /*
+         */
+
+
+
 
         accuracy = (float) 100.0;
 
@@ -132,7 +173,7 @@ public class CoolMenu extends AppCompatActivity {
 
 
         removeButton = (ImageButton) findViewById(R.id.removebtn);
-
+        btCaseTxt = (TextView) findViewById(R.id.btoption);
 
         bigSaveBtn = (Button) findViewById(R.id.bigSaveBtn);
         infoBtn = (ImageButton) findViewById(R.id.btnInfo);
@@ -149,6 +190,19 @@ public class CoolMenu extends AppCompatActivity {
         // casee = (TextView) findViewById(R.id.cases);
 
         //  casee.setText(option.toString());
+        if (BToptionOn == 1) {
+
+
+            btCaseTxt.setText("Bluetooth Auto Location");
+        } else if (BToptionOn == 0) {
+
+            //   btCaseTxt.setText("Bluetooth Auto Disabled");
+
+
+        }
+
+
+
 
 
         bluetoothBtn.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +255,10 @@ public class CoolMenu extends AppCompatActivity {
 
 */
                     if (BToptionOn == 1) {
+
+                        Log.d("TESToptionChosenSend", "Ready to save");
+
+                        showToast("WOW IT WORKS!");
                         wtext = 2 + "/" + currentLongitude + "/" + currentLatitude + "/";
 
                         saveToTextFile(wtext);
